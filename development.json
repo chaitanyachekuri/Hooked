@@ -1,0 +1,13 @@
+{
+  "host": 3000,
+
+  "Config": {
+    "userName": "ashokcsk",
+    "password": "Ashok16209870",
+    "server": "ashokcsk.database.windows.net",
+    "options": {
+      "database": "Csk",
+      "encrypt": true
+    }
+  }
+}
