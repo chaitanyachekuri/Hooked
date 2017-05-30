@@ -10,6 +10,7 @@ var Connection = require('tedious').Connection;
 var Request = require('tedious').Request;
 
 var configDetails = require('./config/index.js');
+var get = require('./Services/get');
 
 var app = express();
 var port = configDetails.host;
@@ -17,31 +18,14 @@ var port = configDetails.host;
 var config = configDetails.Config;
 var connection = new Connection(config);
 
+
 connection.on('connect', function(err){
     if(err){
         console.log(err)
     }
     else{
         console.log("working");
-        request = new Request(
-            "SELECT TOP (1000) [RoleId],[RoleName] FROM [dbo].[UserRolesRef]",
-            function(err, rowCount, rows){
-                if(err){
-                    console.log(err);
-                }
-                console.log(rowCount);
-            }
-
-        );
-
-        request.on('row', function(columns){
-           columns.forEach(function(column){
-               console.log( column);
-           });
-
-        });
-
-        connection.execSql(request);
+        get(connection, Request, app)
 
     }
 });
@@ -54,8 +38,16 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/', function(req, res){
+    debugger;
    res.sendFile('./public/index.html');
+
 });
+
+app.post('/register', function(req, res){
+   console.log(req.body);
+});
+
+
 
 app.listen(port, function(){
     console.log("Working on " + port);

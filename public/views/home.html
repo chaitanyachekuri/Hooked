@@ -1,0 +1,57 @@
+<div class="container">
+    {{register.firstName}}
+    {{app}}
+    <div class="row">
+        <div class="col-md-5" id="login">
+            <form name="login">
+            <div class="form-group">
+                <label for="logEmail">Email Address: </label>
+                <input type="email" class="form-control" id="logEmail" ng-model="userLogin.email" placeholder="Email Address" required>
+            </div>
+
+            <div class="form-group">
+                <label for="logPassword">Password: </label>
+                <input type="password" class="form-control" id="logPassword" ng-model="userLogin.password" placeholder="Password" required>
+            </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+        <div class="col-md-5" id="register">
+            <form name="register">
+                <div class="form-group">
+                    <label for="firstName">First Name: </label>
+                        <input type="text" class="form-control" id="firstName" ng-model="user.firstName" placeholder="First Name" required>
+                </div>
+                <div class="form-group">
+                    <label for="lastName">Last Name: </label>
+                    <input type="text" class="form-control" id="lastName" ng-model="user.lastName" placeholder="Last Name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address: </label>
+                    <input type="email" class="form-control" id="email" ng-model="user.email" placeholder="Email Address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password: </label>
+                    <input type="password" class="form-control" id="password" ng-model="user.password" placeholder="Email Address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Phone Number: </label>
+                    <input type="number" class="form-control" id="Phone" ng-model="user.phone" max-length="10" placeholder="Phone Number" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="Role">Type:</label>
+                    <select class="form-control" id="Role" ng-model="user.role">
+                        <option ng-repeat="(key, val) in userRoles" value="{{val}}">{{val}}</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn btn-primary" ng-click="registerUser()">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
